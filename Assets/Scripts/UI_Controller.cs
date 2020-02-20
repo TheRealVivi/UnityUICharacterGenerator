@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; //needed to load new scenes
 
 public class UI_Controller : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class UI_Controller : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    // Loads next scene
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene("CharacterGenerator");
     }
 
     public void MyButtonPressed()
