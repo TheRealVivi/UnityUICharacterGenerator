@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; //needed to load new scenes
+using UnityEngine.SceneManagement;//needed to load new scenes
 
 public class UI_Controller : MonoBehaviour
 {
