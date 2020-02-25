@@ -24,8 +24,34 @@ public class UI_Controller : MonoBehaviour
         SceneManager.LoadScene("CharacterGenerator");
     }
 
+    public void LoadPrevScene() 
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+
     public void MyButtonPressed()
     {
         Debug.Log("Pressed!");
+    }
+
+    public void QuitPressed() 
+    {
+        Debug.Log("Quit called");
+
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif  
+
+    }
+
+
+    //dd_Races.AddOptions(Races);
+    public void ClassChanged(int index) 
+    {
+        //TODO: logic to recieve text
+
+
     }
 }
