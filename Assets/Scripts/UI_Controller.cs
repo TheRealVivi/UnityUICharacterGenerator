@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,10 +7,24 @@ using UnityEngine.SceneManagement;//needed to load new scenes
 
 public class UI_Controller : MonoBehaviour
 {
+    //public List<string> races = new List<string>() { "Human", "Elf" };
+    //public List<string> classes = new List<string>() { "Fighter", "Bard" };
+    public class Classes 
+    {
+        public static List<string> classes = new List<string>() { "Class", "Fighter", "Bard" };
+    }
+    public class Races 
+    {
+        public static List<string> races = new List<string>() { "Race", "Human", "Elf" };
+    }
+
+
+    private void Awake()
+    {
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -17,11 +32,17 @@ public class UI_Controller : MonoBehaviour
     {
         
     }
+
     
     // Loads next scene
-    public void LoadNextScene()
+    public void LoadCharacterGenScene()
     {
         SceneManager.LoadScene("CharacterGenerator");
+    }
+
+    public void LoadPlayScene() 
+    {
+        SceneManager.LoadScene("Play");
     }
 
     public void LoadPrevScene() 
@@ -46,12 +67,11 @@ public class UI_Controller : MonoBehaviour
 
     }
 
-
-    //dd_Races.AddOptions(Races);
-    public void ClassChanged(int index) 
+    public void CreatePressed() 
     {
-        //TODO: logic to recieve text
-
-
+        
     }
+
+
+
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterGenerator.unity
     guid: 97673991457ac494bab65d3cd9e6c4ab
+  - enabled: 1
+    path: Assets/Scenes/Play.unity
+    guid: 0b9d75d5a6f89f143a8063331e1323a8
   m_configObjects: {}
