@@ -24,21 +24,21 @@ public class Player : MonoBehaviour
     public string cname;
     public string classtype;
     public string race;
-    public string alignment = "neutral";
-    public int hp = 10;
-    public int maxhp = 100;
-    public int xp = 1;
-    public int maxxp = 1;
+    public string alignment;
+    public int hp;
+    public int maxhp;
+    public int xp;
+    public int maxxp;
     public int armorClass;
-    public int walkingSpeed = 0;
-    public int runningSpeed = 0;
-    public int jumpHeight = 0;
-    public float strength = 15;
-    public float dexterity = 15;
-    public float constitution = 15;
-    public float intelligence = 15;
-    public float wisdom = 15;
-    public float charisma = 15;
+    public int walkingSpeed;
+    public int runningSpeed;
+    public int jumpHeight;
+    public float strength;
+    public float dexterity;
+    public float constitution;
+    public float intelligence;
+    public float wisdom;
+    public float charisma;
 
     public List<string> itemList = new List<string>();
 

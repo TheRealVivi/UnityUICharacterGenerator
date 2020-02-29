@@ -314,11 +314,11 @@ MonoBehaviour:
   runningSpeed: 15
   jumpHeight: 15
   strength: 15
-  dexterity: 15
-  constitution: 15
-  intelligence: 15
-  wisdom: 15
-  charisma: 15
+  dexterity: 14
+  constitution: 13
+  intelligence: 12
+  wisdom: 10
+  charisma: 8
   itemList: []
 --- !u!4 &65218435
 Transform:
@@ -614,18 +614,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 
+    m_LineSpacing: 2
+  m_Text: User must roll six times in order to select attributes.
 --- !u!222 &84348474
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11118,9 +11118,9 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 2117601966}
-        m_MethodName: JsonGen
+        m_MethodName: CreateCharacter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

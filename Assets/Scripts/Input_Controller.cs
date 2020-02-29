@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class Input_Controller : MonoBehaviour
 {
-
-
     public void ChangeName(string cname)
     { 
         Player.Instance.cname = cname;

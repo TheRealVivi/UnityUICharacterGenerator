@@ -18,31 +18,88 @@ public class DD_Controller : MonoBehaviour
     public List<string> abilities = new List<string>();
     public List<Text> roll = new List<Text>();
     private int abilityctr = 1, strinx, dexinx, intelinx, chainx, wisinx, consinx;
+    private bool str, dex, intel, cha, wis, cons;
 
     public InputField json;
-
-    public void JsonGen()
+    private void JsonGen() 
     {
-        if ((strinx == dexinx) || (strinx == intelinx) || (strinx == chainx) || (strinx == wisinx) || (strinx == consinx) || (dexinx == intelinx) || (dexinx == chainx) || (dexinx == wisinx) || (dexinx == consinx) || (intelinx == chainx) || (intelinx == wisinx) || (intelinx == consinx) || (chainx == wisinx) || (chainx == consinx) || (wisinx == consinx))
-        {
-            json.text = "You cannot use the same options for each of your abilities! Please select different options! A character with default abilites (15, 14, 13, 12, 10, 8) will be applied.";
-            Player.Instance.DefaultBuild();
-        }
-        else
-            json.text = JsonUtility.ToJson(Player.Instance);
+        json.text = JsonUtility.ToJson(Player.Instance);
     }
 
-    public class Classes
+    public void CreateCharacter()
+    {
+        if(abilityctr == 7)
+            if ((strinx == dexinx) || (strinx == intelinx) || (strinx == chainx) || (strinx == wisinx) || (strinx == consinx) || (dexinx == intelinx) || (dexinx == chainx) || (dexinx == wisinx) || (dexinx == consinx) || (intelinx == chainx) || (intelinx == wisinx) || (intelinx == consinx) || (chainx == wisinx) || (chainx == consinx) || (wisinx == consinx))
+            {
+                json.text = "You cannot use the same options for each of your abilities! Please select different options! A character with default abilites (15, 14, 13, 12, 10, 8) will be applied.";
+                Player.Instance.DefaultBuild();
+
+                str = (strinx == dexinx) || (strinx == intelinx) || (strinx == chainx) || (strinx == wisinx) || (strinx == consinx);
+                dex = (strinx == dexinx) || (dexinx == intelinx) || (dexinx == chainx) || (dexinx == wisinx) || (dexinx == consinx);
+                cons = (consinx == strinx) || (consinx == dexinx) || (consinx == intelinx) || (consinx == chainx) || (consinx == wisinx);
+                intel = (strinx == intelinx) || (dexinx == intelinx) || (intelinx == chainx) || (intelinx == wisinx) || (intelinx == consinx);
+                cha = (dexinx == chainx) || (strinx == chainx) || (chainx == wisinx) || (chainx == consinx) || (intelinx == chainx);
+                wis = (wisinx == consinx) || (chainx == wisinx) || (strinx == wisinx) || (dexinx == wisinx) || (wisinx == intelinx);
+
+                if (str)
+                    ddStrength.GetComponent<Image>().color = Color.red;
+                else
+                    ddStrength.GetComponent<Image>().color = Color.white;
+
+                if (dex)
+                    ddDexterity.GetComponent<Image>().color = Color.red;
+                else
+                    ddDexterity.GetComponent<Image>().color = Color.white;
+
+                if (cons)
+                    ddConstitution.GetComponent<Image>().color = Color.red;
+                else
+                    ddConstitution.GetComponent<Image>().color = Color.white;
+
+                if (intel)
+                    ddIntelligence.GetComponent<Image>().color = Color.red;
+                else
+                    ddIntelligence.GetComponent<Image>().color = Color.white;
+
+                if (cha)
+                    ddCharisma.GetComponent<Image>().color = Color.red;
+                else
+                    ddCharisma.GetComponent<Image>().color = Color.white;
+
+                if (wis)
+                    ddWisdom.GetComponent<Image>().color = Color.red;
+                else
+                    ddWisdom.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                Player.Instance.strength = float.Parse(abilities[strinx]);
+                Player.Instance.dexterity = float.Parse(abilities[dexinx]);
+                Player.Instance.constitution = float.Parse(abilities[consinx]);
+                Player.Instance.intelligence = float.Parse(abilities[intelinx]);
+                Player.Instance.wisdom = float.Parse(abilities[wisinx]);
+                Player.Instance.charisma = float.Parse(abilities[chainx]);
+                JsonGen();
+                ddStrength.GetComponent<Image>().color = Color.white;
+                ddDexterity.GetComponent<Image>().color = Color.white;
+                ddConstitution.GetComponent<Image>().color = Color.white;
+                ddIntelligence.GetComponent<Image>().color = Color.white;
+                ddWisdom.GetComponent<Image>().color = Color.white;
+                ddCharisma.GetComponent<Image>().color = Color.white;
+            }
+    }
+
+    private class Classes
     {
         public static List<string> classes = new List<string>() { "Class", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard" };
     }
 
-    public class Races
+    private class Races
     {
         public static List<string> races = new List<string>() { "Race", "Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling" };
     }
 
-    public class Alignment
+    private class Alignment
     {
         public static List<string> alignment = new List<string>() { "Alignment", "Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil" };
     }
@@ -55,22 +112,22 @@ public class DD_Controller : MonoBehaviour
         PopulateAlignmentDD();
     }
 
-    public void PopulateRaceDD()
+    private void PopulateRaceDD()
     {
         ddRaces.AddOptions(Races.races);
     }
 
-    public void PopulateClassDD()
+    private void PopulateClassDD()
     {
         ddClasses.AddOptions(Classes.classes);
     }
 
-    public void PopulateAlignmentDD() 
+    private void PopulateAlignmentDD() 
     {
         ddAlignment.AddOptions(Alignment.alignment);
     }
 
-    public void PopulateAbilitiesDD() 
+    private void PopulateAbilitiesDD() 
     {
         if (abilityctr == 7)
         {
@@ -105,7 +162,7 @@ public class DD_Controller : MonoBehaviour
     {
         if (index != 0)
         {
-            Player.Instance.strength = float.Parse(abilities[index]);
+            //Player.Instance.strength = float.Parse(abilities[index]);
             strinx = index;
         }
     }
@@ -114,7 +171,7 @@ public class DD_Controller : MonoBehaviour
     {
         if (index != 0)
         {
-            Player.Instance.dexterity = float.Parse(abilities[index]);
+            //Player.Instance.dexterity = float.Parse(abilities[index]);
             dexinx = index;
         }
     }
@@ -123,7 +180,7 @@ public class DD_Controller : MonoBehaviour
     {
         if (index != 0)
         {
-            Player.Instance.constitution = float.Parse(abilities[index]);
+            //Player.Instance.constitution = float.Parse(abilities[index]);
             consinx = index;
         }
     }
@@ -132,7 +189,7 @@ public class DD_Controller : MonoBehaviour
     {
         if (index != 0)
         {
-            Player.Instance.intelligence = float.Parse(abilities[index]);
+            //Player.Instance.intelligence = float.Parse(abilities[index]);
             intelinx = index;
         }
     }
@@ -141,7 +198,7 @@ public class DD_Controller : MonoBehaviour
     {
         if (index != 0)
         {
-            Player.Instance.wisdom = float.Parse(abilities[index]);
+            //Player.Instance.wisdom = float.Parse(abilities[index]);
             wisinx = index;
         }
     }
@@ -150,13 +207,13 @@ public class DD_Controller : MonoBehaviour
     {
         if (index != 0)
         {
-            Player.Instance.charisma = float.Parse(abilities[index]);
+            //Player.Instance.charisma = float.Parse(abilities[index]);
             chainx = index;
         }
     }
 
 
-    public static int Roll()
+    private static int Roll()
     {
         return Random.Range(1, 7);
     }
