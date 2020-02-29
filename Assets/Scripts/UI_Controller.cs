@@ -16,7 +16,10 @@ public class UI_Controller : MonoBehaviour
 
     public void LoadPlayScene()
     {
-        SceneManager.LoadScene("PlayScene");
+        if (Player.Instance != null)
+            SceneManager.LoadScene("PlayScene");
+        else
+            Debug.Log("Cannot load scene!!");
     }
 
     public void LoadMainScene()

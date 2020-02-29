@@ -17,7 +17,20 @@ public class DD_Controller : MonoBehaviour
     public Text finished;
     public List<string> abilities = new List<string>();
     public List<Text> roll = new List<Text>();
-    public int abilityctr = 1;
+    private int abilityctr = 1, strinx, dexinx, intelinx, chainx, wisinx, consinx;
+
+    public InputField json;
+
+    public void JsonGen()
+    {
+        if ((strinx == dexinx) || (strinx == intelinx) || (strinx == chainx) || (strinx == wisinx) || (strinx == consinx) || (dexinx == intelinx) || (dexinx == chainx) || (dexinx == wisinx) || (dexinx == consinx) || (intelinx == chainx) || (intelinx == wisinx) || (intelinx == consinx) || (chainx == wisinx) || (chainx == consinx) || (wisinx == consinx))
+        {
+            json.text = "You cannot use the same options for each of your abilities! Please select different options! A character with default abilites (15, 14, 13, 12, 10, 8) will be applied.";
+            Player.Instance.DefaultBuild();
+        }
+        else
+            json.text = JsonUtility.ToJson(Player.Instance);
+    }
 
     public class Classes
     {
@@ -72,47 +85,74 @@ public class DD_Controller : MonoBehaviour
 
     public void ClassChanged(int index)
     {
-        Player.Instance.classtype = Classes.classes[index];
+        if(index != 0)
+            Player.Instance.classtype = Classes.classes[index];
     }
 
     public void RaceChanged(int index)
     {
-        Player.Instance.race = Races.races[index];
+        if(index != 0)
+            Player.Instance.race = Races.races[index];
     }
 
     public void AlignmentChanged(int index) 
     {
-        Player.Instance.alignment = Alignment.alignment[index];
+        if(index != 0)
+            Player.Instance.alignment = Alignment.alignment[index];
     }
 
     public void StrengthChanged(int index)
     {
-        Player.Instance.strength = float.Parse(abilities[index]);
+        if (index != 0)
+        {
+            Player.Instance.strength = float.Parse(abilities[index]);
+            strinx = index;
+        }
     }
 
     public void DexterityChanged(int index)
     {
-        Player.Instance.dexterity = float.Parse(abilities[index]);
+        if (index != 0)
+        {
+            Player.Instance.dexterity = float.Parse(abilities[index]);
+            dexinx = index;
+        }
     }
 
     public void ConstitutionChanged(int index)
     {
-        Player.Instance.constitution = float.Parse(abilities[index]);
+        if (index != 0)
+        {
+            Player.Instance.constitution = float.Parse(abilities[index]);
+            consinx = index;
+        }
     }
 
     public void IntelligenceChanged(int index)
     {
-        Player.Instance.intelligence = float.Parse(abilities[index]);
+        if (index != 0)
+        {
+            Player.Instance.intelligence = float.Parse(abilities[index]);
+            intelinx = index;
+        }
     }
 
     public void WisdomChanged(int index)
     {
-        Player.Instance.wisdom = float.Parse(abilities[index]);
+        if (index != 0)
+        {
+            Player.Instance.wisdom = float.Parse(abilities[index]);
+            wisinx = index;
+        }
     }
 
     public void CharismaChanged(int index)
     {
-        Player.Instance.charisma = float.Parse(abilities[index]);
+        if (index != 0)
+        {
+            Player.Instance.charisma = float.Parse(abilities[index]);
+            chainx = index;
+        }
     }
 
 

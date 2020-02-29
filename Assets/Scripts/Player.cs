@@ -46,4 +46,14 @@ public class Player : MonoBehaviour
     {
         Debug.Log(this.cname + " " + this.race + " " + this.classtype + " " + this.strength + " " + this.dexterity + " " + this.constitution + " " + this.intelligence + " " + this.wisdom + " " + this.charisma);
     }
+
+    public void DefaultBuild() 
+    {
+        this.strength = 15;
+        this.dexterity = 14;
+        this.constitution = 13;
+        this.intelligence = 12;
+        this.wisdom = 10;
+        this.charisma = 8;
+    }
 }

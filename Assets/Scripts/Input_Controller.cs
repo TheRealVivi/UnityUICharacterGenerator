@@ -3,50 +3,53 @@ using UnityEngine.UI;
 
 public class Input_Controller : MonoBehaviour
 {
-    public InputField json;
 
-    public void JsonGen() 
-    {
-        json.text = JsonUtility.ToJson(Player.Instance);
-    }
 
     public void ChangeName(string cname)
-    {
+    { 
         Player.Instance.cname = cname;
     }
 
     public void ChangeHP(string hp) 
     {
-        Player.Instance.hp = int.Parse(hp);
+        if(!hp.Equals(""))
+            Player.Instance.hp = int.Parse(hp);
     }
 
     public void ChangeMaxHP(string maxhp)
     {
-        Player.Instance.maxhp = int.Parse(maxhp);
+        if(!maxhp.Equals(""))
+            Player.Instance.maxhp = int.Parse(maxhp);
     }
 
 
     public void ChangeXP(string xp) 
     {
-        Player.Instance.xp = int.Parse(xp);
+        if(!xp.Equals(""))
+            Player.Instance.xp = int.Parse(xp);
     }
 
     public void ChangeMaxXP(string maxxp)
     {
-        Player.Instance.maxxp = int.Parse(maxxp);
+        if(!maxxp.Equals(""))
+            Player.Instance.maxxp = int.Parse(maxxp);
     }
 
 
     public void ChangeArmorClass(string armor) 
     {
-        Player.Instance.armorClass = int.Parse(armor);
+        if(!armor.Equals(""))
+            Player.Instance.armorClass = int.Parse(armor);
     }
 
     public void ChangeSpeed(string speed)
     {
-        Player.Instance.walkingSpeed = int.Parse(speed);
-        Player.Instance.runningSpeed = int.Parse(speed);
-        Player.Instance.jumpHeight = int.Parse(speed);
+        if (!speed.Equals(""))
+        {
+            Player.Instance.walkingSpeed = int.Parse(speed);
+            Player.Instance.runningSpeed = int.Parse(speed);
+            Player.Instance.jumpHeight = int.Parse(speed);
+        }
     }
 
 }
