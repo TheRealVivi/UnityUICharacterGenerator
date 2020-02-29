@@ -1,8 +1,14 @@
 All art is original and made in microsoft paint.
+-MainScene background
+-MainScene button thumbnails
+-CharGenScene Background
 
 All music is original.
+-MainScene theme
+-CharGenScene
 
 UI objects use default sprites.
+-Except for MainScene buttons.
 
 UI functions using three scripts to control all buttons, dropdowns, inputfields, text fields.
 
